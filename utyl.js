@@ -18,6 +18,15 @@ String.prototype.contains = function(str){
 };
 
 //*******************************
+// Get Keys from a hash
+//*******************************
+Object.prototype.keys = function(){
+    var ret=[],p;
+    for(p in this) if(Object.prototype.hasOwnProperty.call(this,p)) ret.push(p);
+    return ret;
+}
+
+//*******************************
 // Hash helpers
 //*******************************
 Object.prototype.keys = function(){
@@ -46,18 +55,37 @@ Array.prototype.removeByIndex = function(i){
 }
 
 //*******************************
+// Player Array Helpers
+//*******************************
+Array.prototype.getByName = function(n){ 
+    return this.filter(function(p){ return p.name == n; }).first;
+}
+
+
+//*******************************
 // Trigger Class
 //*******************************
 Trigger = function(){}
 Trigger.prototype.get = function(){
     return (!this.s)?this.s = true:false;
 }
-Trigger.prototype.reset = function(){ this.s = undefined; }
+Trigger.prototype.reset = function(){
+    this.s = undefined;
+}
 
 //*******************************
 // Vector2 Class
 //*******************************
-Vector2 = function(x, y){this.x = x; this.y = y;}
+Vector2 = function(x, y){
+    if(x instanceof Vector2){
+        this.x = x.x; 
+        this.y = x.y;
+    }
+    else{
+        this.x = x; 
+        this.y = y;
+    }
+}
 Vector2.prototype.x = null;
 Vector2.prototype.y = null;
 Vector2.prototype.distance = function(v2){ return Vector2.distance(this, v2); };
@@ -66,6 +94,31 @@ Vector2.distance = function(v1, v2){
     return Math.sqrt(Math.pow(v1.x + v2.x, 2) + Math.pow(v1.y + v2.y, 2)); 
 }
 Vector2.dot = function(v1, v2){ return v1.x * v2.x + v1.y * v2.y; }
+
+//*******************************
+// Vector3 Class
+//*******************************
+Vector3 = function(x, y, z){
+    if(x instanceof Vector3){
+        this.x = x.x; 
+        this.y = x.y; 
+        this.z = x.z;
+    }
+    else{
+        this.x = x; 
+        this.y = y; 
+        this.z = z;
+    }
+}
+Vector3.prototype.x = null;
+Vector3.prototype.y = null;
+Vector3.prototype.z = null;
+Vector3.prototype.distance = function(v2){ return Vector3.distance(this, v2); };
+
+Vector3.distance = function(v1, v2){ 
+    return Math.sqrt(Math.pow(v1.x + v2.x, 2) + Math.pow(v1.y + v2.y, 2) + Math.pow(v1.z + v2.z, 2)); 
+}
+Vector3.dot = function(v1, v2){ return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z; }
 
 
 //*******************************
