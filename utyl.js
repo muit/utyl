@@ -5,7 +5,7 @@
 //****                Miguel Fernandez  -  github.com/muit                 ****
 //*****************************************************************************
 
-Util = {
+Utyl = {
     author: "muitxer",
     repo: "http://github.com/muit/utyl",
     version: "0.1.03"
