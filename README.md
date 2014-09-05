@@ -12,11 +12,10 @@ var trigger = new Trigger();
 
 console.log(trigger.get());
 console.log(trigger.get());
-
-Result:
--->true
--->false
 ```
+Result:<br>
+-->true<br>
+-->false
 
 Triggers can be reseted:
 ```javascript
@@ -27,12 +26,11 @@ console.log(trigger.get());
 
 trigger.reset();
 console.log(trigger.get());
-
-Result:
--->true
--->false
--->true
 ```
+Result:<br>
+-->true<br>
+-->false<br>
+-->true
 
 ### EventMap
 So big...I wont write it yet...
@@ -72,29 +70,28 @@ function add(amount){
 add(amount);
 
 console.log(amount.value);
-
-Result:
--->0
 ```
+Result:<br>
+-->0
 
 ### Inherits
 Inherits simplifies the POO inheritance inheritance in javascript.
 
 ```javascript
-  var Foo = function(){}
-  Foo.prototype.name = "foo";
-  
-  var Bar = function(){}
-  Bar.inherits(Foo); //Parent class is now Foo
-  Bar.prototype.subname = "bar";
-  
-  console.log(Bar.name);
-  console.log(Bar.subname);
-  
-  Result:
-  -->foo
-  -->bar
+var Foo = function(){}
+Foo.prototype.name = "foo";
+
+var Bar = function(){}
+Bar.inherits(Foo); //Parent class is now Foo
+Bar.prototype.subname = "bar";
+
+console.log(Bar.name);
+console.log(Bar.subname);
 ```
+Result:<br>
+-->foo<br>
+-->bar
+
 ### String Helpers
 ### Array Helpers
 ### Hash Helpers
