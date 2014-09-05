@@ -95,8 +95,9 @@ Inherits simplifies the POO inheritance inheritance in javascript.
   -->foo
   -->bar
 ```
-### Inherits
-
+### String Helpers
+### Array Helpers
+### Hash Helpers
 
 ## Compression
 Compressed with jscompress.com
