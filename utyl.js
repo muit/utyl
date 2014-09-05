@@ -5,6 +5,15 @@
 //****                Miguel Fernandez  -  github.com/muit                 ****
 //*****************************************************************************
 
+Util = {
+    author: "muitxer",
+    repo: "http://github.com/muit/utyl",
+    version: "0.1.03"
+}
+
+//*******************************
+// String helpers
+//*******************************
 String.prototype.startsWith = function(str){
     return this.slice(0, str.length) == str;
 };
@@ -16,15 +25,6 @@ String.prototype.endsWith = function(suffix) {
 String.prototype.contains = function(str){
     return this.indexOf(str) != -1;
 };
-
-//*******************************
-// Get Keys from a hash
-//*******************************
-Object.prototype.keys = function(){
-    var ret=[],p;
-    for(p in this) if(Object.prototype.hasOwnProperty.call(this,p)) ret.push(p);
-    return ret;
-}
 
 //*******************************
 // Hash helpers
