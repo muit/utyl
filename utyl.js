@@ -8,7 +8,7 @@
 Utyl = {
     author: "muitxer",
     repo: "http://github.com/muit/utyl",
-    version: "0.2.02"
+    version: "0.2.03"
 }
 
 //*******************************
@@ -259,3 +259,9 @@ RGBA.inherits(RGB);
 Math.randomRange = function(min, max){
     return Math.floor(Math.random() * (max - min)) + min;;
 }
+
+//*******************************
+// document.host
+// Contains the webpage host
+//*******************************
+document.host = document.URL.split("/")[2].split(":")[0];
