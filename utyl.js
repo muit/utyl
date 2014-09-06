@@ -29,15 +29,15 @@ String.prototype.contains = function(str){
 //*******************************
 // Hash helpers
 //*******************************
-Object.prototype.keys = function(){
+Object.keys = function(object){
     var ret=[],p;
-    for(p in this) if(Object.prototype.hasOwnProperty.call(this,p)) ret.push(p);
+    for(p in object) if(Object.prototype.hasOwnProperty.call(object,p)) ret.push(p);
     return ret;
 }
 
-Object.prototype.key = function(o){
+Object.key = function(object, o){
     var ret=[],p;
-    for(p in this) if(this[p] == o) ret.push(p);
+    for(p in object) if(object[p] == o) ret.push(p);
     return ret;
 }
 
