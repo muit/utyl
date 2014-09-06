@@ -265,4 +265,4 @@ Math.randomRange = function(min, max){
 // Works only on Client
 // Contains the webpage host
 //*******************************
-if(document) document.host = document.URL.split("/")[2].split(":")[0];
+if(typeof document != "undefined") document.host = document.URL.split("/")[2].split(":")[0];
