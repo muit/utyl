@@ -67,12 +67,15 @@ function add(amount){
     amount.value++;
 }
 
+console.log(amount.value);
+
 add(amount);
 
 console.log(amount.value);
 ```
 Result:<br>
--->0
+-->0<br>
+-->1
 
 ### Inherits
 Inherits simplifies the POO inheritance inheritance in javascript.
