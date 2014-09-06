@@ -2,6 +2,22 @@
 
 [Utyl](https://github.com/muit/utyl) is an extension to the usual javascript usage.
 
+## Load the Api
+
+We must comprovate if Utyl is loaded, and if it's not charge it.
+
+In NodeJs:
+
+```javascript
+if(typeof Utyl == "undefined"){
+  //require needs the Utyl path in your project folder
+  // In my case '../source/utyl/utyl.js'
+  require("../source/utyl/utyl.js");
+}
+```
+If you want to use Utyl in the client side is also possible just linking the file, like a normal javascript.
+To make sure it's working, you can comprovate Utyl existence with the same code.
+
 ## Components
 
 ### Trigger
