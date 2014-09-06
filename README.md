@@ -111,6 +111,35 @@ Result:<br>
 -->foo<br>
 -->bar
 
+### RGB & RGBA
+Rgb and Rgba are classes to use colors simply and fast. Their arguments are similar than in css:
+```javascript
+  var rgbColor = new RGB(red, blue, green);
+  var rgbaColor = new RGBA(red, blue, green, alpha);
+```
+From RGB and RGBA objects you can get the hexadecimal value or the individual values:
+```javascript
+  var rgbColor = new RGB(25, 156, 125);
+  var rgbaColor = new RGBA(25, 156, 125, 0.5);
+  
+  //Hexadecimal value from the color (RGB or RGBA)
+  console.log(rgbaColor.hex);
+  
+  //Hexadecimal value from the color (RGB or RGBA)
+  console.log(rgbaColor.red);
+  console.log(rgbaColor.green);
+  console.log(rgbaColor.blue);
+  
+  //Alpha value from the color(only RGBA)
+  console.log(rgbaColor.alpha);
+```
+Result:<br>
+-->199C7D<br>
+-->25<br>
+-->156<br>
+-->125<br>
+-->0.5
+
 ### String Helpers
 ### Array Helpers
 ### Hash Helpers
