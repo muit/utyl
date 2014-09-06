@@ -58,7 +58,7 @@ Array.prototype.removeByIndex = function(i){
 // Player Array Helpers
 //*******************************
 Array.prototype.getByName = function(n){ 
-    return this.filter(function(p){ return p.name == n; }).first;
+    return this.filter(function(p){ return p.name == n; }).first();
 }
 
 
