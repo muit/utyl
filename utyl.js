@@ -240,9 +240,9 @@ var RGB = function(r,g,b){
 }
 RGB.prototype.set = function(r,g,b){
     if( (r >= 0 && r < 256) && (g >= 0 && g < 256) && (b >= 0 && b < 256)){
-        this.r = r;
-        this.g = g;
-        this.b = b;
+        this.red = r;
+        this.green = g;
+        this.blue = b;
         this.hex = (r.toString(16)+g.toString(16)+b.toString(16)).toUpperCase();
     }
 }
