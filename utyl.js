@@ -8,7 +8,7 @@
 Utyl = {
     author: "muitxer",
     repo: "http://github.com/muit/utyl",
-    version: "0.2.01"
+    version: "0.2.02"
 }
 
 //*******************************
@@ -251,3 +251,11 @@ var RGBA = function(r, g, b, a){
     this.alpha = a;
 }
 RGBA.inherits(RGB);
+
+
+//*******************************
+// Math randomRange
+//*******************************
+Math.randomRange = function(min, max){
+    return Math.floor(Math.random() * (max - min)) + min;;
+}
