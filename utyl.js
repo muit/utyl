@@ -8,7 +8,7 @@
 Utyl = {
     author: "muitxer",
     repo: "http://github.com/muit/utyl",
-    version: "0.1.03"
+    version: "0.1.07"
 }
 
 //*******************************
