@@ -212,10 +212,10 @@ Timer = function(oninstance, fps, times){
     function instance()
     {
         if(times == undefined || count++ <= times)
-            oninstance();
-
-        var diff = (new Date().getTime() - start) - (count * speed);
-        setTimeout(instance, (speed - diff));
+            if(!oninstance()){
+                var diff = (new Date().getTime() - start) - (count * speed);
+                setTimeout(instance, (speed - diff));
+            }
     }
     setTimeout(instance, speed);
 }

@@ -70,6 +70,17 @@ new Timer(function(){
   console.log("again...");
 }, FPS, count);
 ```
+
+If the callback returns true the timer will end (but its optional):
+```javascript
+new Timer(function(){
+    console.log("hey!");
+    return true;
+}, 10);
+```
+Result:<br>
+-->Hey!
+
 ### Vector2 & Vector3
 Vectors contains coordinates. Vector2 for 2D (x,y) and Vector3 for 3D (x,y,z).
 
