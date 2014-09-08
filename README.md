@@ -156,7 +156,7 @@ Result:<br>
 ### Hash Helpers
 
 ## Compression
-Compressed with jscompress.com
+Compressed with Closure Compiler
 
 ## Want more?
 You want more utilities... Say me about them! 
