@@ -62,9 +62,10 @@ Array.prototype.getByName = function(n){
 }
 
 
-//*******************************
-// Trigger Class
-//*******************************
+/*******************************
+ * Trigger Class
+ * @constructor 
+ *******************************/
 Trigger = function(){}
 Trigger.prototype.get = function(){
     return (!this.s)?this.s = true:false;
@@ -73,9 +74,10 @@ Trigger.prototype.reset = function(){
     this.s = undefined;
 }
 
-//*******************************
-// Vector2 Class
-//*******************************
+/*******************************
+ * Vector2 Class
+ * @constructor 
+ *******************************/
 Vector2 = function(x, y){
     if(x instanceof Vector2){
         this.x = x.x; 
@@ -95,9 +97,10 @@ Vector2.distance = function(v1, v2){
 }
 Vector2.dot = function(v1, v2){ return v1.x * v2.x + v1.y * v2.y; }
 
-//*******************************
-// Vector3 Class
-//*******************************
+/*******************************
+ * Vector3 Class
+ * @constructor 
+ *******************************/
 Vector3 = function(x, y, z){
     if(x instanceof Vector3){
         this.x = x.x; 
@@ -121,9 +124,10 @@ Vector3.distance = function(v1, v2){
 Vector3.dot = function(v1, v2){ return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z; }
 
 
-//*******************************
-// EventMap Class
-//*******************************
+/*******************************
+ * EventMap Class
+ * @constructor 
+ *******************************/
 EventMap = function(){}
 EventMap.prototype.events = [];
 EventMap.prototype.callbacks = [];
@@ -174,9 +178,10 @@ EventMap.prototype.removeAllEvents = function(){
 _ = function(variable){
     if(variable instanceof Reference)
         return variable.value;
-    return new Reference(variable);
+    var r = new Reference(variable);
+    return r;
 }
-
+/** @constructor **/
 Reference = function(variable){
     this._ = this.value = variable;
 }
@@ -201,9 +206,10 @@ ifNotDefined = function(classPath){
     return parent;
 }
 
-//*******************************
-// Timer Class
-//*******************************
+/*******************************
+ * Timer Class
+ * @constructor 
+ *******************************/
 Timer = function(oninstance, fps, times){
     var speed = 1000/fps,
         count = 0,
@@ -232,9 +238,10 @@ Function.prototype.inherits = function(superClass){
     this.prototype.constructor = this;
 }
 
-//*******************************
-// Color Classes
-//*******************************
+/*******************************
+ * RGB Class
+ * @constructor 
+ *******************************/
 var RGB = function(r,g,b){
     this.set(r,g,b);
 }
@@ -243,9 +250,14 @@ RGB.prototype.set = function(r,g,b){
         this.red = r;
         this.green = g;
         this.blue = b;
-        this.hex = (r.toString(16)+g.toString(16)+b.toString(16)).toUpperCase();
+        this.hex = (r*256*256+g*256+b).toString(16).toUpperCase();
     }
 }
+/*******************************
+ * RGBA Class
+ * @constructor 
+ * @extends RGB
+ *******************************/
 var RGBA = function(r, g, b, a){
     this.set(r,g,b);
     this.alpha = a;
