@@ -263,16 +263,19 @@ Timer = function(oninstance, fps, times){
 
     function instance()
     {
-        if(times == undefined)
-            var diff = (new Date().getTime() - start) - (count * speed);
-            if(count++ < times || !oninstance((diff/speed)+1)){
+            if(times && count++ >= times)
+                return;
+            var now = new Date().getTime()
+            var diff = (now - start) - speed;
+            if(diff < 0) diff = 0;
+            start = now;            
+            if(!oninstance(diff/speed+1))
                 setTimeout(instance, (speed-diff));
-            }
     }
     setTimeout(function(){
         start = new Date().getTime();
         instance();
-    }, speed);
+    }, 0);
 }
 
 /*******************************
