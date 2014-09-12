@@ -257,26 +257,32 @@ Math.randomRange = function(min, max){
  * @constructor 
  *******************************/
 Timer = function(oninstance, fps, times){
+    var self = this;
+    self.times = times;
     var speed = 1000/fps,
         count = 0,
-        start = 0;
+        start = 0,
+        now = 0;
 
     function instance()
     {
-            if(times && count++ >= times)
+            if(self.times && count++ >= self.times)
                 return;
-            var now = new Date().getTime()
-            var diff = (now - start) - speed;
+            now = new Date().getTime();
+            var diff = (now - last) - speed;
             if(diff < 0) diff = 0;
-            start = now;            
-            if(!oninstance(diff/speed+1))
+            last = now;            
+            if(!oninstance(diff/speed+1)){
                 setTimeout(instance, (speed-diff));
+            }
     }
     setTimeout(function(){
-        start = new Date().getTime();
+        last = new Date().getTime();
         instance();
     }, 0);
 }
+Timer.prototype.close = function(){this.times = true};
+
 
 /*******************************
  * document.host
