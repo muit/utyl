@@ -206,29 +206,6 @@ ifNotDefined = function(classPath){
     return parent;
 }
 
-/*******************************
- * Timer Class
- * @constructor 
- *******************************/
-Timer = function(oninstance, fps, times){
-    var speed = 1000/fps,
-        count = 0,
-        start = 0;
-
-    function instance()
-    {
-        if(times == undefined)
-            var diff = (new Date().getTime() - start) - (count * speed);
-            if(count++ < times || !oninstance((diff/speed)+1)){
-                setTimeout(instance, (speed-diff));
-            }
-    }
-    setTimeout(function(){
-        start = new Date().getTime();
-        instance();
-    }, speed);
-}
-
 
 //*******************************
 // Inherits method
@@ -275,9 +252,33 @@ Math.randomRange = function(min, max){
     return Math.floor(Math.random() * (max - min)) + min;;
 }
 
-//*******************************
-// document.host
-// Works only on Client
-// Contains the webpage host
-//*******************************
+/*******************************
+ * Timer Class
+ * @constructor 
+ *******************************/
+Timer = function(oninstance, fps, times){
+    var speed = 1000/fps,
+        count = 0,
+        start = 0;
+
+    function instance()
+    {
+        if(times == undefined)
+            var diff = (new Date().getTime() - start) - (count * speed);
+            if(count++ < times || !oninstance((diff/speed)+1)){
+                setTimeout(instance, (speed-diff));
+            }
+    }
+    setTimeout(function(){
+        start = new Date().getTime();
+        instance();
+    }, speed);
+}
+
+/*******************************
+ * document.host
+ * Works only on Client
+ * Contains the webpage host
+ * @const *
+*******************************/
 if(typeof document != "undefined") document.host = document.URL.split("/")[2].split(":")[0];
