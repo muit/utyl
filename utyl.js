@@ -213,17 +213,20 @@ ifNotDefined = function(classPath){
 Timer = function(oninstance, fps, times){
     var speed = 1000/fps,
         count = 0,
-        start = new Date().getTime();
+        start = 0;
 
     function instance()
     {
         if(times == undefined)
-            if(count++ < times || !oninstance()){
-                var diff = (new Date().getTime() - start) - (count * speed);
-                setTimeout(instance, (speed - diff));
+            var diff = (new Date().getTime() - start) - (count * speed);
+            if(count++ < times || !oninstance((diff/speed)+1)){
+                setTimeout(instance, (speed-diff));
             }
     }
-    setTimeout(instance, speed);
+    setTimeout(function(){
+        start = new Date().getTime();
+        instance();
+    }, speed);
 }
 
 
