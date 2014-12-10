@@ -8,7 +8,7 @@
 Utyl = {
     author: "muitxer",
     repo: "http://github.com/muit/utyl",
-    version: "0.3.3"
+    version: "0.3.4"
 };
 
 //*******************************
@@ -52,7 +52,7 @@ Object.key = function(object, o)
 Array.prototype.first = function(){ return this[0]; };
 Array.prototype.last = function(){ return this[this.length-1];};
 Array.prototype.remove = function(o)
-{ 
+{
     var i = this.indexOf(o);
     return (i >= 0)? this.splice(i, 1)[0] : undefined;
 };
@@ -62,7 +62,7 @@ Array.prototype.removeByIndex = function(i)
 };
 Array.prototype.each = function(callback)
 {
-  if(typeof callback != "function") 
+  if(typeof callback != "function")
     throw new Error("The callback provided is not a function.");
   for (var i = 0, len = this.length; i < len; i++) {
     callback(this[i]);
@@ -78,13 +78,13 @@ Array.prototype.getNextFlip = function()
 // Player Array Helpers
 //*******************************
 Array.prototype.getByName = function(n)
-{ 
+{
     return this.filter(function(p){ return p.name == n; }).first();
 };
 
 /*******************************
  * Trigger Class
- * @constructor 
+ * @constructor
  *******************************/
 Trigger = function(){};
 Trigger.prototype.get = function(){ return (!this.s)?this.s = true:false;};
@@ -92,17 +92,17 @@ Trigger.prototype.reset = function(){ this.s = undefined;};
 
 /*******************************
  * Vector2 Class
- * @constructor 
+ * @constructor
  *******************************/
 Vector2 = function(x, y)
 {
     if(x instanceof Vector2)
     {
-        this.x = x.x; 
+        this.x = x.x;
         this.y = x.y;
     }
     else{
-        this.x = x; 
+        this.x = x;
         this.y = y;
     }
 };
@@ -110,26 +110,26 @@ Vector2.prototype.x = null;
 Vector2.prototype.y = null;
 Vector2.prototype.distance = function(v2){ return Vector2.distance(this, v2); };
 
-Vector2.distance = function(v1, v2){ 
-    return Math.sqrt(Math.pow(v1.x + v2.x, 2) + Math.pow(v1.y + v2.y, 2)); 
+Vector2.distance = function(v1, v2){
+    return Math.sqrt(Math.pow(v1.x + v2.x, 2) + Math.pow(v1.y + v2.y, 2));
 };
 Vector2.dot = function(v1, v2){ return v1.x * v2.x + v1.y * v2.y; };
 
 /*******************************
  * Vector3 Class
- * @constructor 
+ * @constructor
  *******************************/
 Vector3 = function(x, y, z)
 {
     if(x instanceof Vector3)
     {
-        this.x = x.x; 
-        this.y = x.y; 
+        this.x = x.x;
+        this.y = x.y;
         this.z = x.z;
     }
     else{
-        this.x = x; 
-        this.y = y; 
+        this.x = x;
+        this.y = y;
         this.z = z;
     }
 };
@@ -139,15 +139,15 @@ Vector3.prototype.z = null;
 Vector3.prototype.distance = function(v2){ return Vector3.distance(this, v2); };
 
 Vector3.distance = function(v1, v2)
-{ 
-    return Math.sqrt(Math.pow(v1.x + v2.x, 2) + Math.pow(v1.y + v2.y, 2) + Math.pow(v1.z + v2.z, 2)); 
+{
+    return Math.sqrt(Math.pow(v1.x + v2.x, 2) + Math.pow(v1.y + v2.y, 2) + Math.pow(v1.z + v2.z, 2));
 };
 Vector3.dot = function(v1, v2){ return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z; };
 
 
 /*******************************
  * EventMap Class
- * @constructor 
+ * @constructor
  *******************************/
 EventMap = function(){};
 EventMap.prototype.events = [];
@@ -254,7 +254,7 @@ Function.prototype.inherits = function(superClass)
 
 /*******************************
  * RGB Class
- * @constructor 
+ * @constructor
  *******************************/
 var RGB = function(r,g,b)
 {
@@ -272,7 +272,7 @@ RGB.prototype.set = function(r,g,b)
 };
 /*******************************
  * RGBA Class
- * @constructor 
+ * @constructor
  * @extends RGB
  *******************************/
 var RGBA = function(r, g, b, a)
@@ -286,6 +286,20 @@ RGBA.inherits(RGB);
 //*******************************
 // Math randomRange
 //*******************************
+Math.srandom =  function (a,f,g){
+  var h=[];
+  f=1==f?{entropy:!0}:f||{};
+  var o=l(k(f.entropy?[a,n(b)]:null==a?m():a,3),h),s=new j(h);
+  return l(n(s.S),b),(f.pass||g||function(a,b,d){
+    return d?(c[i]=a,b):a;
+  })(function(){
+    for(var a=s.g(e),b=p,c=0;q>a;)
+      a=(a+c)*d,b*=d,c=s.g(1);
+    for(;a>=r;)
+      a/=2,b/=2,c>>>=1;
+    return(a+c)/b},o,"global"in f?f.global:this==c);
+};
+
 Math.randomRange = function(min, max)
 {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -293,7 +307,7 @@ Math.randomRange = function(min, max)
 
 /*******************************
  * Timer Class
- * @constructor 
+ * @constructor
  *******************************/
 Timer = function(oninstance, fps, times)
 {
@@ -311,7 +325,7 @@ Timer = function(oninstance, fps, times)
         now = new Date().getTime();
         var diff = (now - last) - speed;
         if(diff < 0) diff = 0;
-        last = now;            
+        last = now;
         if(!oninstance(diff/speed+1))
             setTimeout(instance, (speed-diff));
     };
