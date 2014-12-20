@@ -56,10 +56,12 @@ Array.prototype.remove = function(o)
     var i = this.indexOf(o);
     return (i >= 0)? this.splice(i, 1)[0] : undefined;
 };
+
 Array.prototype.removeByIndex = function(i)
 {
     return (i >= 0)? this.splice(i, 1)[0] : undefined;
 };
+
 Array.prototype.each = function(callback)
 {
   if(typeof callback != "function")
@@ -68,9 +70,16 @@ Array.prototype.each = function(callback)
     callback(this[i]);
   }
 };
+
 Array.prototype.getNextFlip = function()
 {
   this.push(this.shift());
+  return this[0];
+};
+
+Array.prototype.getLastFlip = function()
+{
+  this.unshift(this.pop());
   return this[0];
 };
 
