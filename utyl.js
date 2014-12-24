@@ -29,6 +29,11 @@ String.prototype.contains = function(str)
     return this.indexOf(str) != -1;
 };
 
+String.randomString = function(inv){
+  inv = inv || 8;
+  return Math.random().toString(36).substring(inv);
+};
+
 //*******************************
 // Hash helpers
 //*******************************
@@ -292,27 +297,21 @@ var RGBA = function(r, g, b, a)
 RGBA.inherits(RGB);
 
 
-//*******************************
-// Math randomRange
-//*******************************
-Math.srandom =  function (a,f,g){
-  var h=[];
-  f=1==f?{entropy:!0}:f||{};
-  var o=l(k(f.entropy?[a,n(b)]:null==a?m():a,3),h),s=new j(h);
-  return l(n(s.S),b),(f.pass||g||function(a,b,d){
-    return d?(c[i]=a,b):a;
-  })(function(){
-    for(var a=s.g(e),b=p,c=0;q>a;)
-      a=(a+c)*d,b*=d,c=s.g(1);
-    for(;a>=r;)
-      a/=2,b/=2,c>>>=1;
-    return(a+c)/b},o,"global"in f?f.global:this==c);
-};
-
+/********************************
+ * Math randomRange
+ *******************************/
 Math.randomRange = function(min, max)
 {
     return Math.floor(Math.random() * (max - min)) + min;
 };
+
+/*******************************
+ * SeedRandom by DavidBau(github.com/davidbau)
+ ******************************/
+(function(n,p,l,f,w,B,q,r,t){function C(a){var b,e=a.length,c=this,d=0,h=c.b=c.c=0,g=c.a=[];for(e||(a=[e++]);d<f;)g[d]=d++;for(d=0;d<f;d++)g[d]=g[h=k&h+a[d%e]+(b=g[d])],g[h]=b;(c.d=function(a){for(var b,d=0,h=c.b,g=c.c,e=c.a;a--;)b=e[h=k&h+1],d=d*f+e[k&(e[h]=e[g=k&g+b])+(e[g]=b)];c.b=h;c.c=g;return d})(f)}function x(a,b){b.b=a.b;b.c=a.c;b.a=a.a.slice();return b}function y(a,b){var e=[],c=typeof a,d;if(b&&"object"==c)for(d in a)try{e.push(y(a[d],b-1))}catch(h){}return e.length?e:"string"==c?a:a+"\x00"}
+function u(a,b){for(var e=a+"",c,d=0;d<e.length;)b[k&d]=k&(c^=19*b[k&d])+e.charCodeAt(d++);return m(b)}function D(){var a;try{if(v)return m(v.i(f));n.crypto.getRandomValues(a=new Uint8Array(f));return m(a)}catch(b){return[+new Date,n,(a=n.navigator)&&a.plugins,n.screen,m(p)]}}function m(a){return String.fromCharCode.apply(0,a)}var E=l.pow(f,w),z=l.pow(2,B),F=2*z,k=f-1,v,A=l["seed"+t]=function(a,b,e){var c=[];b=1==b?{e:!0}:b||{};a=u(y(b.e?[a,m(p)]:null==a?D():a,3),c);var d=new C(c);u(m(d.a),p);return(b.h||
+e||function(a,b,e,c){c&&(c.a&&x(c,d),a.state=function(){return x(d,{})});return e?(l[t]=a,b):a})(function(){for(var a=d.d(w),b=E,c=0;a<z;)a=(a+c)*f,b*=f,c=d.d(1);for(;a>=F;)a/=2,b/=2,c>>>=1;return(a+c)/b},a,"global"in b?b.global:this==l,b.state)};u(l[t](),p);if(q&&q.f){q.f=A;try{v=require("crypto")}catch(G){}}else r&&r.g&&r(function(){return A})})(this,[],Math,256,6,52,"object"==typeof module&&module,"function"==typeof define&&define,"random");
+
 
 /*******************************
  * Timer Class
