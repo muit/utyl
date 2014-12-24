@@ -8,7 +8,7 @@
 Utyl = {
     author: "muitxer",
     repo: "http://github.com/muit/utyl",
-    version: "0.3.4"
+    version: "0.3.6-b"
 };
 
 //*******************************
@@ -29,7 +29,7 @@ String.prototype.contains = function(str)
     return this.indexOf(str) != -1;
 };
 
-String.randomString = function(inv){
+String.random = function(inv){
   inv = inv || 8;
   return Math.random().toString(36).substring(inv);
 };
